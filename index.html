@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0">
+    <title>爱游戏 · 稳定体验入口说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #f1f3f6;
+            color: #1e1f23;
+            line-height: 1.6;
+        }
+
+        /* 深色头部导航 + hero 融合 */
+        .top-header {
+            background: #0b0d17;
+            padding: 0 5%;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #e9ecf0;
+            font-weight: 500;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        .logo-area span {
+            background: #9bb7ff;
+            width: 8px;
+            height: 8px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #cdd3e0;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 4px 0;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #ffb84d;
+        }
+
+        .hero-dark {
+            background: linear-gradient(158deg, #0b0d17 0%, #1c2132 100%);
+            padding: 80px 5% 70px;
+            text-align: center;
+            color: #f0f2f6;
+        }
+
+        .hero-dark h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            margin-bottom: 20px;
+        }
+
+        .hero-dark .sub {
+            font-size: 1.2rem;
+            color: #b2bed9;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: #2f3957;
+            color: #d6e0ff;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-size: 1rem;
+            border: 1px solid #4c5b80;
+        }
+
+        .hero-tag a {
+            color: #ffc857;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed #ffb84d7f;
+        }
+
+        .hero-tag a:hover {
+            color: #ffe499;
+        }
+
+        /* 浅色正文区 */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 5% 60px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: #181c2b;
+            border-left: 5px solid #f7b731;
+            padding-left: 18px;
+        }
+
+        .intro-text {
+            background: white;
+            border-radius: 24px;
+            padding: 40px 48px;
+            margin-bottom: 48px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+            color: #2e3142;
+        }
+
+        .intro-text p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+        }
+
+        .intro-text strong {
+            color: #0b1d3a;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin: 48px 0 56px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 28px;
+            padding: 32px 24px 28px;
+            transition: transform 0.2s;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.02);
+            border: 1px solid #e6eaf0;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: #cdd6e8;
+        }
+
+        .feature-card .icon-box {
+            background: #0b0d17;
+            width: 48px;
+            height: 48px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+            color: #ecc94b;
+            font-size: 1.4rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #141824;
+        }
+
+        .feature-card p {
+            color: #3d4357;
+            font-size: 0.95rem;
+        }
+
+        .feature-card a {
+            color: #b45309;
+            font-weight: 500;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .faq-section {
+            background: white;
+            border-radius: 28px;
+            padding: 32px 44px;
+            margin-top: 20px;
+            border: 1px solid #e1e6f0;
+        }
+
+        .faq-item {
+            padding: 18px 0;
+            border-bottom: 1px solid #eef1f7;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-size: 1.05rem;
+            margin-bottom: 6px;
+            color: #0f1a2e;
+        }
+
+        .faq-item p {
+            color: #3f455b;
+            font-size: 0.98rem;
+        }
+
+        .notice-line {
+            background: #eef3fa;
+            border-radius: 40px;
+            padding: 18px 30px;
+            margin: 44px 0 18px;
+            color: #1e293b;
+            font-size: 0.95rem;
+            border-left: 6px solid #f7b731;
+        }
+
+        .footer-note {
+            text-align: center;
+            padding: 40px 0 24px;
+            color: #6b7280;
+            font-size: 0.85rem;
+            border-top: 1px solid #dce2ec;
+            margin-top: 32px;
+        }
+
+        .footer-note a {
+            color: #1e3a8a;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 900px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .hero-dark h1 {
+                font-size: 2rem;
+            }
+            .intro-text {
+                padding: 28px 20px;
+            }
+            .faq-section {
+                padding: 24px 18px;
+            }
+            .nav-links {
+                gap: 18px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .top-header {
+                height: auto;
+                padding: 14px 5%;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 12px 16px;
+            }
+            .hero-dark {
+                padding: 50px 5% 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 顶部导航 -->
+    <header class="top-header">
+        <div class="logo-area">
+            <span></span> 页・指南
+        </div>
+        <ul class="nav-links">
+            <li><a href="#intro">说明</a></li>
+            <li><a href="#scenes">场景</a></li>
+            <li><a href="#faq">常见问题</a></li>
+        </ul>
+    </header>
+
+    <!-- 深色头图 / hero 区域 (包含核心介绍) -->
+    <section class="hero-dark">
+        <h1>稳定入口 · 清晰指引</h1>
+        <p class="sub">围绕「爱游戏」整理的页面说明，方便你快速了解网站结构与常见用法。</p>
+        <div class="hero-tag">
+            🎮 主要入口：<a href="https://webm-aiyouxi.com.cn">爱游戏</a>
+        </div>
+        <p style="margin-top: 28px; color: #99a7c2; font-size: 0.9rem;">—— 以简单、直接的方式呈现，避免多余跳转 ——</p>
+    </section>
+
+    <!-- 浅色正文区开始 -->
+    <div class="main-content" id="intro">
+
+        <!-- 介绍段落 -->
+        <div class="intro-text">
+            <p><strong>这是一份偏向导航性质的页面</strong>，主要梳理了几个常用模块和背后的逻辑。如果你正在寻找一个稳定的起点，可以直接从上方或下文链接进入 <a href="https://webm-aiyouxi.com.cn" style="color:#b45309; font-weight:500;">爱游戏</a>，那里汇集了主要内容和持续维护的信息。</p>
+
+            <p>很多人初次访问时，会关心网站是否流畅、内容是否完整。就目前的观察来看，整体结构偏向实用和清晰，没有过多复杂的层级。下面三个场景模块分别对应不同使用习惯，你可以根据自身需要直接参考。</p>
+
+            <p>此外，页面末尾整理了几条常见的说明条目，覆盖了访问方式、设备适配等话题。你可以把它们当作快速参考，节省反复查找的时间。</p>
+        </div>
+
+        <!-- 三个场景模块 -->
+        <h2 class="section-title" id="scenes">三个常用场景</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="icon-box">📂</div>
+                <h3>直接浏览</h3>
+                <p>如果你习惯打开首页后自由探索，可以从 <a href="https://webm-aiyouxi.com.cn">爱游戏</a> 开始。导航分类比较直观，内容按主题排列，适合随意翻阅。</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-box">🔍</div>
+                <h3>特定查找</h3>
+                <p>当你想快速定位某个方向时，可以利用站内索引或搜索功能。多数板块都配有精简标题，减少翻页时间。</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-box">📱</div>
+                <h3>移动端适配</h3>
+                <p>网站对手机和平板做了响应式处理，菜单与卡片会自适应。如果你常用移动设备，体验也相对稳定。</p>
+            </div>
+        </div>
+
+        <!-- 常见说明 / FAQ 摘要 -->
+        <div class="faq-section" id="faq">
+            <h3 style="font-size:1.3rem; margin-bottom:18px; color:#0a1428;">📌 常见说明 · 简摘</h3>
+            <div class="faq-item">
+                <strong>▎访问是否有限制？</strong>
+                <p>没有特殊限制。直接通过主流浏览器打开即可，无需额外插件或注册。部分资源加载可能受网络环境影响，属于正常现象。</p>
+            </div>
+            <div class="faq-item">
+                <strong>▎内容更新频率如何？</strong>
+                <p>站点内容不定期维护和补充，但核心框架长期保持稳定。你可以把 <a href="https://webm-aiyouxi.com.cn" style="color:#b45309; font-weight:500;">爱游戏</a> 当作固定书签使用。</p>
+            </div>
+            <div class="faq-item">
+                <strong>▎是否有付费或下载要求？</strong>
+                <p>就目前公开部分而言，所有页面内容均可直接浏览，不存在强制付费或下载环节。如未来有变化，会在站内说明。</p>
+            </div>
+            <div style="margin-top: 8px; color:#4b5268; font-size:0.9rem; border-top:1px dashed #d0d8e6; padding-top:16px;">
+                ⚡ 如需更完整的条目，建议在站内“帮助”或“关于”板块查阅。
+            </div>
+        </div>
+
+        <!-- 补充提示区 (非重复) -->
+        <div class="notice-line">
+            💡 <strong>提示</strong>：如果你是从其它渠道看到这个页面，它本质上是为<a href="https://webm-aiyouxi.com.cn" style="color:#b45309; font-weight:500;">爱游戏</a>所做的辅助说明页。所有链接指向同一站点，无第三方外链。
+        </div>
+
+        <!-- 底部 -->
+        <div class="footer-note">
+            <p>内容整理 · 稳定入口参考 · 最近更新：2025年4月</p>
+            <p style="margin-top:6px;">主站：<a href="https://webm-aiyouxi.com.cn">爱游戏</a> ｜ 本页仅作说明用途</p>
+        </div>
+
+    </div>
+    <!-- 浅色正文区结束 -->
+
+</body>
+</html>
