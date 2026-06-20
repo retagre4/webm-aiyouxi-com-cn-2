@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>金年会 · 内容导航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #fdf6e3 0%, #fce9d8 50%, #f7d9c2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 20px;
+            line-height: 1.6;
+            color: #2d2a24;
+        }
+
+        .page {
+            max-width: 1080px;
+            width: 100%;
+            margin: 30px auto 60px;
+        }
+
+        /* 顶部导航 */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(6px);
+            padding: 16px 28px;
+            border-radius: 60px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .nav-logo {
+            font-weight: 600;
+            font-size: 1.3rem;
+            letter-spacing: 0.5px;
+            color: #8b5e3c;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #5c4a3a;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+            padding: 4px 0;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-links a:hover {
+            color: #a86d4a;
+            border-bottom-color: #d9b382;
+        }
+
+        /* 卡片通用 */
+        .card {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 32px 34px;
+            box-shadow: 0 10px 28px rgba(160, 110, 70, 0.08);
+            margin-bottom: 36px;
+            transition: box-shadow 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 14px 34px rgba(140, 95, 55, 0.12);
+        }
+
+        /* hero 区 */
+        .hero {
+            text-align: center;
+            padding: 44px 34px 38px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 650;
+            color: #4d3425;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .hero .sub {
+            font-size: 1.05rem;
+            color: #6f5a48;
+            max-width: 700px;
+            margin: 0 auto 18px;
+        }
+
+        .hero .tagline {
+            display: inline-block;
+            background: #eedbcb;
+            padding: 6px 18px;
+            border-radius: 40px;
+            color: #4d3425;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* 介绍段落 */
+        .intro-text p {
+            margin-bottom: 16px;
+            font-size: 1rem;
+        }
+
+        .intro-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 三个场景模块 (卡片内flex) */
+        .scenes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            justify-content: center;
+            margin: 18px 0 10px;
+        }
+
+        .scene-item {
+            flex: 1 1 260px;
+            background: #fbf6ef;
+            border-radius: 24px;
+            padding: 24px 22px;
+            text-align: center;
+            border: 1px solid #f0e3d6;
+        }
+
+        .scene-item .emoji-badge {
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .scene-item h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #4d3425;
+            margin-bottom: 10px;
+        }
+
+        .scene-item p {
+            font-size: 0.92rem;
+            color: #5f4d3c;
+        }
+
+        /* 常见说明 FAQ 摘要 */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 6px;
+        }
+
+        .faq-item {
+            background: #f9f3ec;
+            border-radius: 20px;
+            padding: 18px 18px 16px;
+        }
+
+        .faq-item .q {
+            font-weight: 600;
+            color: #3f2e20;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .faq-item .a {
+            font-size: 0.9rem;
+            color: #5d4a38;
+        }
+
+        /* 链接按钮感 */
+        a.btn-like {
+            display: inline-block;
+            background: #d9b382;
+            color: #2d241c;
+            padding: 10px 26px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: background 0.2s, transform 0.1s;
+            border: none;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+
+        a.btn-like:hover {
+            background: #cba070;
+            transform: scale(1.02);
+        }
+
+        .inline-link {
+            color: #8b5e3c;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1.5px solid #d9b382;
+            transition: border-color 0.2s;
+        }
+
+        .inline-link:hover {
+            border-bottom-color: #8b5e3c;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 32px;
+            font-size: 0.85rem;
+            color: #7a6856;
+            border-top: 1px solid #eadaca;
+            padding-top: 28px;
+        }
+
+        footer a {
+            color: #6f533b;
+            text-decoration: none;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            .page { margin: 16px auto; }
+            nav { flex-direction: column; align-items: stretch; padding: 16px 20px; border-radius: 28px; }
+            .nav-links { justify-content: center; gap: 18px; }
+            .hero h1 { font-size: 1.9rem; }
+            .card { padding: 24px 18px; }
+            .scene-item { flex: 1 1 100%; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 顶部导航 -->
+    <nav>
+        <span class="nav-logo">✦ 金年会</span>
+        <div class="nav-links">
+            <a href="#intro">主题</a>
+            <a href="#scenes">场景</a>
+            <a href="#faq">说明</a>
+        </div>
+    </nav>
+
+    <!-- Hero 区 -->
+    <div class="card hero">
+        <h1>金年会 · 主题导航</h1>
+        <div class="sub">从内容原点出发，梳理平台背后的脉络与实用场景。</div>
+        <span class="tagline">聚焦 · 轻量 · 可查阅</span>
+    </div>
+
+    <!-- 介绍 intro -->
+    <div class="card" id="intro">
+        <div class="intro-text">
+            <p><strong>金年会</strong> 并非一个孤立的名字，它关联着一套围绕信息聚合、活动展示与内容呈现所构建的线上空间。这个平台致力于将分散的素材、动态以及主题资料进行有序梳理，帮助使用者快速找到与自己兴趣或需求相匹配的内容模块。</p>
+            <p>无论你是第一次接触，还是希望深入了解某个主题方向，基于 <a href="https://portal-jinnianhui.com" class="inline-link">金年会</a> 所提供的内容框架，都能更清晰地理解信息之间的关联。整个体系以分类和索引为基础，减少了无效浏览的负担。</p>
+            <p>在信息过载的时代，一个有组织的内容导航本身就是效率工具。金年会所尝试的，正是将资源、事件与背景说明整合到同一路径之下，让浏览者可以按图索骥，而非盲目点击。</p>
+        </div>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <div class="card" id="scenes">
+        <h2 style="font-weight:600; color:#4d3425; margin-bottom:4px; font-size:1.3rem;">常见使用场景</h2>
+        <p style="color:#6f5a48; margin-bottom:14px;">以下提炼了三种典型的浏览与查阅方式，供参考。</p>
+
+        <div class="scenes">
+            <div class="scene-item">
+                <span class="emoji-badge">📂</span>
+                <h3>主题查阅</h3>
+                <p>按照内容分类快速定位某个专题下的文档、列表或动态，省去层层查找的耗时。</p>
+            </div>
+            <div class="scene-item">
+                <span class="emoji-badge">🔗</span>
+                <h3>资料索引</h3>
+                <p>通过平台内结构化链接，获取与特定关键词相关的背景说明或延伸阅读。</p>
+            </div>
+            <div class="scene-item">
+                <span class="emoji-badge">📌</span>
+                <h3>活动概览</h3>
+                <p>汇集不同时间节点的主题事件或更新记录，便于回顾与整体把握。</p>
+            </div>
+        </div>
+        <p style="margin-top:18px; font-size:0.92rem; color:#6f5a48;">这些场景都围绕同一个核心入口展开：<a href="https://portal-jinnianhui.com" class="inline-link">金年会</a> 所承载的内容体系。</p>
+    </div>
+
+    <!-- 常见说明（FAQ 摘要） -->
+    <div class="card" id="faq">
+        <h2 style="font-weight:600; color:#4d3425; margin-bottom:14px; font-size:1.3rem;">常见说明</h2>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <div class="q">📖 内容定位是什么？</div>
+                <div class="a">平台主要提供主题化的信息集合，涵盖事件、文档、索引等，不做商业化推广或诱导性跳转。</div>
+            </div>
+            <div class="faq-item">
+                <div class="q">🧭 如何开始浏览？</div>
+                <div class="a">直接通过 <a href="https://portal-jinnianhui.com" class="inline-link">金年会</a> 进入首页，即可看到主题分类与导航模块。</div>
+            </div>
+            <div class="faq-item">
+                <div class="q">📁 资料会更新吗？</div>
+                <div class="a">相关内容根据素材整理周期进行补充与调整，建议不定期回看。</div>
+            </div>
+            <div class="faq-item">
+                <div class="q">🔍 是否支持搜索？</div>
+                <div class="a">平台内提供基础的分类筛选，部分页面可通过浏览器查找功能定位关键词。</div>
+            </div>
+        </div>
+        <p style="margin-top:16px; font-size:0.9rem; color:#6f5a48;">以上说明仅为概要，更详细的介绍可在对应页面中查阅。</p>
+    </div>
+
+    <!-- 一个温和的引导区块（不含诱导文字） -->
+    <div style="text-align:center; margin: 8px 0 14px;">
+        <a href="https://portal-jinnianhui.com" class="btn-like">金年会</a>
+        <p style="margin-top:14px; font-size:0.85rem; color:#7a6856;">通过上方链接可直达平台首页。</p>
+    </div>
+
+    <!-- footer -->
+    <footer>
+        <p>内容基于公开信息整理 · 仅供浏览参考</p>
+        <p style="margin-top:6px;"><a href="https://portal-jinnianhui.com" style="color:#6f533b;">金年会</a> · 导航页</p>
+    </footer>
+</div>
+</body>
+</html>
